@@ -216,9 +216,21 @@ function App() {
   }
 
   const handleHover = (e) => {
-    if (hoverState[e.target.id].selected) {
+    /*
+	if (hoverState[e.target.id].selected) {
       return;
+	  
     }
+	*/
+	const targetId = e.currentTarget.id; // Use currentTarget for stability
+  const item = hoverState[targetId];
+
+  // Check if the item exists AND if it's selected
+  if (item && item.selected) {
+    return;
+  }
+  
+  // Proceed with your hover logic...
 
     let newHoverState = hoverState.map((element, i) => {
       if (e.target.id == i) {
